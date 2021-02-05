@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMSReader</string>
+
+    <!--SMS List -->
+    <string name="sms_list_empty">There are no stored sms.</string>
+    <string name="sms_list_fetching_failed">Unable to fetch the sms list. Please try again later.</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="sms_list_fragment_label">SMS List</string>
+</resources>

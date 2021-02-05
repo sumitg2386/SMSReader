@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "315385285986",
+    "project_id": "smsreader-5fbe4",
+    "storage_bucket": "smsreader-5fbe4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315385285986:android:c549ee70c381278fa4303b",
+        "android_client_info": {
+          "package_name": "com.nuco.smsreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315385285986-5f5f2n7cmfpstjrg1r92et3ff591f7cp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABaUc9jfR_U5dg4Ac-4i5P58yKpWXhs-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315385285986-5f5f2n7cmfpstjrg1r92et3ff591f7cp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

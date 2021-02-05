@@ -1,0 +1,108 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.nuco.smsreader"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix '-debug'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    flavorDimensions "environment"
+    productFlavors {
+        def API_BASE_URL = "API_BASE_URL"
+        production {
+            dimension "environment"
+            buildConfigField "String", API_BASE_URL, "\"https://api.nuco.com/smsreader/\""
+            manifestPlaceholders = [appLabel: "@string/app_name"]
+        }
+        staging {
+            dimension "environment"
+            buildConfigField "String", API_BASE_URL, "\"https://api.nuco.com/smsreader-stag/\""
+            manifestPlaceholders = [appLabel: "@string/app_name"]
+        }
+        devel {
+            dimension "environment"
+            buildConfigField "String", API_BASE_URL, "\"https://api.nuco.com/smsreader-dev/\""
+            manifestPlaceholders = [appLabel: "Ignite Devel"]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp"
+
+    // Koin AndroidX Scope features
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+
+    // Koin AndroidX ViewModel features
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    // WorkManager
+    implementation "androidx.work:work-runtime-ktx:$work_manager_version"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.4.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+
+    // unit testing
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation "org.koin:koin-test:$koin_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
+    androidTestImplementation "com.google.truth:truth:1.1.2"
+    androidTestImplementation "androidx.work:work-testing:$work_manager_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    testImplementation 'org.mockito:mockito-inline:2.8.47'
+}
