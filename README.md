@@ -8,7 +8,8 @@ Assuming we are building an app, the app requires the user's permission to read 
 
 Also build a screen where we can display user amount and time read from messages in list form sorted by latest message first.
 
-![Alt text](/Screenshot.jpeg?raw=true "Optional Title")
+![Alt text](/Screenshot.jpeg?raw=true)
+
 
 ## Technology Used
 
@@ -20,3 +21,12 @@ Also build a screen where we can display user amount and time read from messages
 | Dependency Injection   | Koin                    |
 | Background Job         | WorkManager             |
 | Database               | Firestore               |
+| Unit Testing           | JUnit, Truth            |
+
+Firestore is used as APIs are not avaialable. Once APIs are available just need to change code in two files.
+1. In [SMSListFragment](https://github.com/sumitg2386/SMSReader/blob/main/app/src/main/java/com/nuco/smsreader/ui/SMSListFragment.kt), use [SMSViewModel](https://github.com/sumitg2386/SMSReader/blob/main/app/src/main/java/com/nuco/smsreader/viewmodel/SMSViewModel.kt) in place of [SMSFirestoreViewModel](https://github.com/sumitg2386/SMSReader/blob/main/app/src/main/java/com/nuco/smsreader/viewmodel/SMSFirestoreViewModel.kt).
+2. In [SMSReceiver](https://github.com/sumitg2386/SMSReader/blob/main/app/src/main/java/com/nuco/smsreader/receiver/SMSReceiver.kt), use [SMSSaveWorker](https://github.com/sumitg2386/SMSReader/blob/main/app/src/main/java/com/nuco/smsreader/worker/SMSSaveWorker.kt) in place of [SMSFirestoreSaveWorker](https://github.com/sumitg2386/SMSReader/blob/main/app/src/main/java/com/nuco/smsreader/worker/SMSFirestoreSaveWorker.kt).
+
+## APK
+
+[APK](/SMSReaderDebug)
